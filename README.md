@@ -1,5 +1,5 @@
 # MarsObservatory
-[![npm version](https://img.shields.io/npm/l/react)]()
+[![npm version](https://img.shields.io/npm/l/react)](https://github.com/MariaLuiza-CS/MarsObservatory/blob/master/LICENSE)
 
 ## Sobre o projeto
 
