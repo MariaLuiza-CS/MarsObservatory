@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxStrokeErrorColor">@android:color/holo_red_dark</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="errorIconTint">@android:color/holo_red_dark</item>
+        <item name="errorTextAppearance">@style/ErrorTextAppearance</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="endIconTint">@color/white</item>
+        <item name="startIconTint">@color/white</item>
+        <item name="counterTextColor">@color/white</item>
+    </style>
+
+    <style name="ErrorTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+</resources>

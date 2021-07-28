@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dar_grey_project"
+    android:padding="5dp"
+    tools:context=".ui.signup.SignUpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_trinity_logo_sign_up"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="42dp"
+                android:contentDescription="@string/ct_trinity_logo"
+                android:src="@drawable/icons8_nasa"
+                android:transitionName="imageTransition"
+                app:layout_constraintBottom_toTopOf="@id/til_email_sign_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email_sign_up"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Email"
+                app:layout_constraintBottom_toTopOf="@id/til_password_sign_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password_sign_up"
+                style="@style/LoginTextInputLayoutStyle"                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Senha"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toTopOf="@id/til_password_confirmation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLength="17" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password_confirmation"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="56dp"
+                android:hint="Confirme sua senha"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toTopOf="@id/btn_register"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/white"
+                    android:inputType="textPassword"
+                    android:maxLength="17" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="36dp"
+                android:text="Registrar"
+                app:layout_constraintBottom_toTopOf="@id/tv_login_no_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/ButtonActivitysStyle" />
+
+            <TextView
+                android:id="@+id/tv_login_no_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginBottom="36dp"
+                android:text="Já possui uma conta?"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_go_activity_login"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_go_activity_login"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tv_login_no_account"
+                app:layout_constraintStart_toEndOf="@id/tv_login_no_account"
+                app:layout_constraintTop_toTopOf="@id/tv_login_no_account" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
