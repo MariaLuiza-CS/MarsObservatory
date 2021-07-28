@@ -1,15 +1,14 @@
 package com.example.myapplication.ui.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.myapplication.R;
 import com.example.myapplication.data.model.User;
@@ -90,8 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             finish();
                         }
                     } else {
-                        tilLoginPassword.setError("Digite um email válido");
-                        Toast.makeText(LoginActivity.this, "Digite um email válido", Toast.LENGTH_SHORT).show();
+                        tilLoginEmail.setError(getString(R.string.til_error_email_valid));
                     }
                 }
             }
@@ -104,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String email = tilLoginEmail.getEditText().getText().toString().trim();
 
                 if (email.isEmpty()) {
-                    tilLoginEmail.setError("Campo não pode ficar vazio");
+                    tilLoginEmail.setError(getString(R.string.til_error_email_empty));
                     return false;
                 } else {
                     tilLoginEmail.setError(null);
@@ -119,16 +117,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 final Pattern textPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
 
                 if (password.isEmpty()) {
-                    tilLoginPassword.setError("Campo não pode ficar vazio");
+                    tilLoginPassword.setError(getString(R.string.til_error_email_empty));
                     return false;
                 } else if (password.length() > 16) {
-                    tilLoginPassword.setError("Muito longa");
+                    tilLoginPassword.setError(getString(R.string.til_error_password_long));
                     return false;
                 } else if (password.length() < 8) {
-                    tilLoginPassword.setError("Muito curta");
+                    tilLoginPassword.setError(getString(R.string.til_error_password_short));
                     return false;
                 } else if (!textPattern.matcher(password).matches()) {
-                    tilLoginPassword.setError("A senha precisa conter uma letra maiuscula,\numa letra minuscula e um numero");
+                    tilLoginPassword.setError(getString(R.string.til_error_password_inform));
                     return false;
                 } else {
                     tilLoginPassword.setError(null);

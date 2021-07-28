@@ -13,15 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.R;
+import com.example.myapplication.data.model.MarsData;
 import com.example.myapplication.ui.home.adapter.ListMoviesAdapter;
 import com.example.myapplication.ui.home.presenter.ListMarsContract;
 import com.example.myapplication.ui.home.presenter.ListMarsPresenter;
 import com.example.myapplication.ui.login.LoginActivity;
-import com.example.myapplication.R;
-import com.example.myapplication.data.model.MarsData;
-import com.example.myapplication.data.model.User;
 
 import java.util.List;
+
+import static com.example.myapplication.R.string.toast_home_api_error;
 
 public class HomeActivity extends AppCompatActivity implements ListMarsContract.ListMarsView {
 
@@ -46,10 +47,10 @@ public class HomeActivity extends AppCompatActivity implements ListMarsContract.
         presenter = new ListMarsPresenter(this);
         presenter.getMarsInformation();
 
-        String emailUser = sharedPreferences.getString(KEY_EMAIL,null);
+        String emailUser = sharedPreferences.getString(KEY_EMAIL, null);
 
         if (emailUser != null) {
-            tvEmailFinal.setText("Olá,  " + emailUser);
+            tvEmailFinal.setText(String.format("%s%s", getString(R.string.tv_hello_user), emailUser));
         }
 
 
@@ -84,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements ListMarsContract.
 
     @Override
     public void showApiError() {
-        Toast.makeText(this, "Erro ao obter informações da sonda", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, toast_home_api_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="ct_trinity_logo">Company\'s logo</string>
+    <string name="cd_trinity_logo" translatable="false">Company\'s logo</string>
+    <string name="cd_app_icon" translatable="false">Apps`s icon</string>
+    <string name="toast_home_api_error">Erro ao obter informações da sonda</string>
+    <string name="til_error_email_empty">Campo não pode ficar vazio</string>
+    <string name="til_error_password_long">Muito grande</string>
+    <string name="til_error_password_short">Muito curta</string>
+    <string name="til_error_password_inform">A senha precisa conter uma letra maiúscula, uma letra minúscula e um número</string>
+    <string name="til_error_password_diferent">Senhas incompatíveis</string>
+    <string name="hint_sign_up_email" translatable="false">Email</string>
+    <string name="hint_sign_up_password">Senha</string>
+    <string name="hint_sign_up_confirm_password">Confirme sua senha</string>
+    <string name="btn_login_text" translatable="false">Login</string>
+    <string name="btn_sign_up_back_login" translatable="false">Login</string>
+    <string name="btn_home_text">Sair</string>
+    <string name="tv_hello_user">\Olá,  \</string>
+    <string name="tv_home_mast_camera" translatable="false">Mast Camera</string>
+    <string name="tv_login_no_account">Não possui uma conta?</string>
+    <string name="tv_login_keep_login">Manter conectado</string>
+    <string name="tv_login_create_account">Criar conta</string>
+    <string name="tv_sign_up_create">Registrar</string>
+    <string name="tv_sign_up_already_login">Já possui uma conta?</string>
+    <string name="cd_item_photo" translatable="false">Photo of the Rover</string>
+    <string name="til_error_email_valid">Digite um email válido</string>
 </resources>

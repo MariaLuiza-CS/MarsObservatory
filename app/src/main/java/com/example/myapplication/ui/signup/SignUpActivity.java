@@ -1,21 +1,21 @@
 package com.example.myapplication.ui.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.myapplication.ui.login.LoginActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import com.example.myapplication.R;
 import com.example.myapplication.data.model.User;
 import com.example.myapplication.data.source.local.UserDao;
 import com.example.myapplication.data.source.local.UserDatabase;
+import com.example.myapplication.ui.login.LoginActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -54,27 +54,35 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = tilRegisterEmail.getEditText().getText().toString().trim();
                 String password = tilRegisterPassword.getEditText().getText().toString().trim();
+                String confirmationPassword = tilRegisterPasswordConfirmation.getEditText().getText().toString().trim();
 
-                if (validationInputs()) {
-                    User user = new User(email, password);
-                    mUserDao.insert(user);
-                    Intent moveToLogin = new Intent(SignUpActivity.this, LoginActivity.class);
-                    startActivity(moveToLogin);
-                    finish();
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Senhas diferentes", Toast.LENGTH_SHORT).show();
+                if (validationInputs(email, password, confirmationPassword)){
+                    if (confirmValidationPasswords(password, confirmationPassword)){
+                        User user = new User(email, password);
+                        mUserDao.insert(user);
+                        Intent moveToLogin = new Intent(SignUpActivity.this, LoginActivity.class);
+                        startActivity(moveToLogin);
+                        finish();
+                    }
                 }
             }
 
-            public boolean validationInputs() {
-                return !(!validationEmail() | !validationPassword());
+            public boolean validationInputs(String email, String password, String confirmationPassword) {
+                return !(!validationEmail(email) |
+                        !validationPassword(password) |
+                        !validationPasswordConfirmation(confirmationPassword));
             }
 
-            private boolean validationEmail() {
-                String email = tilRegisterEmail.getEditText().getText().toString().trim();
+            public boolean confirmValidationPasswords(String password, String confirmationPassword) {
+                return validationPasswords(password, confirmationPassword);
+            }
+
+            private boolean validationEmail(String email) {
+
+                email = tilRegisterEmail.getEditText().getText().toString().trim();
 
                 if (email.isEmpty()) {
-                    tilRegisterEmail.setError("Campo não pode ficar vazio");
+                    tilRegisterEmail.setError(getString(R.string.til_error_email_empty));
                     return false;
                 } else {
                     tilRegisterEmail.setError(null);
@@ -83,46 +91,62 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
 
-            private boolean validationPassword() {
-                String password = tilRegisterPassword.getEditText().getText().toString().trim();
-                String confirmationPassword = tilRegisterPasswordConfirmation.getEditText().getText().toString().trim();
-
-                final Pattern textPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
+            private boolean validationPassword(String password) {
+                password = tilRegisterPassword.getEditText().getText().toString().trim();
 
                 if (password.isEmpty()) {
-                    tilRegisterPassword.setError("Campo não pode ficar vazio");
+                    tilRegisterPassword.setError(getString(R.string.til_error_email_empty));
                     return false;
-                } else if (confirmationPassword.isEmpty()) {
-                    tilRegisterPasswordConfirmation.setError("Campo não pode ficar vazio");
+                } else {
+                    tilRegisterPassword.setError(null);
+                    return true;
+                }
+            }
+
+            private boolean validationPasswordConfirmation(String passwordConfirmation) {
+                passwordConfirmation = tilRegisterPasswordConfirmation.getEditText().getText().toString().trim();
+
+                if (passwordConfirmation.isEmpty()) {
+                    tilRegisterPasswordConfirmation.setError(getString(R.string.til_error_email_empty));
                     return false;
-                } else if (password.length() > 16) {
-                    tilRegisterPassword.setError("Muito longa");
+                } else {
+                    tilRegisterPasswordConfirmation.setError(null);
+                    return true;
+                }
+
+            }
+
+            private boolean validationPasswords(String password, String passwordConfirmation) {
+                password = tilRegisterPassword.getEditText().getText().toString().trim();
+                passwordConfirmation = tilRegisterPasswordConfirmation.getEditText().getText().toString().trim();
+
+                if (!validationFormationPassword(password)) {
+                    tilRegisterPassword.setError(getString(R.string.til_error_password_inform));
                     return false;
-                } else if (password.length() < 8) {
-                    tilRegisterPassword.setError("Muito curta");
-                    return false;
-                } else if (confirmationPassword.length() < 8) {
-                    tilRegisterPasswordConfirmation.setError("Muito curta");
-                    return false;
-                } else if (confirmationPassword.length() > 16) {
-                    tilRegisterPasswordConfirmation.setError("Muito longa");
-                    return false;
-                } else if (!confirmationPassword.equals(password)) {
-                    tilRegisterPasswordConfirmation.setError("senhas incompatíveis");
-                    return false;
-                } else if (!textPattern.matcher(password).matches()) {
-                    tilRegisterPassword.setError("A senha precisa conter uma letra maiúscula, uma letra minúscula e um número");
-                    tilRegisterPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
+                }else if (!passwordConfirmation.equals(password)) {
+                    tilRegisterPasswordConfirmation.setError(getString(R.string.til_error_password_diferent));
                     return false;
                 } else {
                     tilRegisterPasswordConfirmation.setError(null);
                     tilRegisterPassword.setError(null);
                     return true;
                 }
-            }
-        });
-    }
 
+            }
+
+            private boolean validationFormationPassword(String password) {
+                String Formationpattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$";
+                final Pattern textPattern = Pattern.compile(Formationpattern);
+                final Matcher textMatch = textPattern.matcher(password);
+                return textMatch.matches();
+            }
+
+        });
+
+
+    }
 }
+
+
 
 

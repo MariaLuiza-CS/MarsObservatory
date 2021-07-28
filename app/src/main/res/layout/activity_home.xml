@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
-        android:text="Olá, usefistname@email.com"
+        tools:text="Hello, user@email.com"
         android:textAlignment="textStart"
         android:textColor="@android:color/white"
         android:layout_marginTop="32dp"
@@ -30,7 +30,7 @@
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="32dp"
         android:textAllCaps="true"
-        android:text="Mast Camera"
+        android:text="@string/tv_home_mast_camera"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -44,7 +44,8 @@
         app:layout_constraintEnd_toEndOf="@id/tv_home_email"
         app:layout_constraintBottom_toBottomOf="@id/tv_home_email"
         app:layout_constraintTop_toTopOf="@id/tv_home_email"
-        android:src="@drawable/icons8_nasa"/>
+        android:src="@drawable/icons8_nasa"
+        android:contentDescription="@string/cd_app_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_movie"
@@ -61,10 +62,10 @@
 
     <Button
         android:id="@+id/btn_disconnect"
-        android:layout_width="71dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:text="Sair"
+        android:text="@string/btn_home_text"
         android:textAllCaps="false"
         style="@style/ButtonActivitysStyle"
         android:textStyle="bold"

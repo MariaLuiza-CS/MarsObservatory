@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="toast_home_api_error">Error to connect with NASA</string>
+    <string name="til_error_email_valid">Enter a valid e-mail</string>
+    <string name="til_error_email_empty">Empty field</string>
+    <string name="til_error_password_long">Very long</string>
+    <string name="til_error_password_short">Very short</string>
+    <string name="til_error_password_inform">The password must contain an uppercase letter, a lowercase letter and a number</string>
+    <string name="til_error_password_diferent">The passwords must match</string>
+    <string name="hint_sign_up_password">Password</string>
+    <string name="hint_sign_up_confirm_password">Confirm password</string>
+    <string name="btn_home_text">Sign out</string>
+    <string name="tv_hello_user">\Hello,  \</string>
+    <string name="tv_login_no_account">Dont have a account?</string>
+    <string name="tv_login_keep_login">Keep connect</string>
+    <string name="tv_login_create_account">Create account</string>
+    <string name="tv_sign_up_create">Create</string>
+    <string name="tv_sign_up_already_login">Already have a account?</string>
+</resources>
